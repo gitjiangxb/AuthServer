@@ -14,6 +14,14 @@ import org.springframework.web.filter.GenericFilterBean;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 
+/**
+ * @Package:com.jxb.config
+ * @ClassName:JwtFilter
+ * @Description:TODO 过滤要保护的url，同时在过滤器里进行token验证
+ * @author:Jiangxb
+ * @date:2018年9月18日 下午4:32:32
+ * 
+ */
 public class JwtFilter extends GenericFilterBean {
 
 	@Override
@@ -21,6 +29,7 @@ public class JwtFilter extends GenericFilterBean {
 			throws IOException, ServletException {
 		HttpServletRequest request = (HttpServletRequest) req;
         HttpServletResponse response = (HttpServletResponse) res;
+        
         String authHeader = request.getHeader("Authorization");
         if ("OPTIONS".equals(request.getMethod())) {
             response.setStatus(HttpServletResponse.SC_OK);
